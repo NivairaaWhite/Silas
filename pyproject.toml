@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "silas"
+version = "1.5.0"
+description = "Universal scraper — any website, any data, any format. Tiered HTTP, resilient browser, EPUB/JSONL."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "playwright>=1.40.0",
+  "requests>=2.31.0",
+  "beautifulsoup4>=4.12.0",
+  "lxml>=4.9.0",
+  "httpx>=0.27.0",
+  "trafilatura>=1.12.0",
+  "pypdf>=4.0",
+  "pdfplumber>=0.11.0",
+  "streamlit>=1.28.0",
+  "fastapi>=0.110.0",
+  "uvicorn[standard]>=0.27.0",
+  "pydantic>=2.0",
+  "curl_cffi>=0.7.0",
+  "ebooklib>=0.18",
+]
+
+[project.optional-dependencies]
+multimodal = [
+  "easyocr>=1.7",
+  "pytesseract>=0.3.10",
+  "Pillow>=10.0",
+  "openai-whisper>=20231117",
+]
+llm = [
+  "openai>=1.0",
+]
+
+[project.scripts]
+silas = "silas.cli:main"
+silas-ui = "silas.ui_launcher:main"
+silas-api = "silas.api:main"
+
+[tool.setuptools.packages.find]
+include = ["silas*"]
